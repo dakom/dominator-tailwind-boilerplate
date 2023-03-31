@@ -14,7 +14,7 @@ Bottom line - pleasant dev and deploy experience, this boilerplate is built to s
 
 1. Install tooling - Rust, yarn, trunk, etc.
 2. `yarn install`
-3. Change `BASE_URL` in `app.config.json` for your relative url base
+3. Change `uri_root` in `app.config.json` for your relative url base
 
 Might need to adapt Trunk.toml if on windows (it assumes `sh` exists)
 
@@ -23,4 +23,4 @@ Might need to adapt Trunk.toml if on windows (it assumes `sh` exists)
 1. `yarn start`
 2. visit http://127.0.0.1:8080/
 
-Media is served at `http://127.0.0.1:9000` but this is abstracted away in code
+Media is served at `http://127.0.0.1:9000` (and `/media/*` in production) but this is abstracted away in code
