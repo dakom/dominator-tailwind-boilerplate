@@ -1,6 +1,6 @@
 # Boilerplate for Dominator w/ Tailwind
 
-This isn't actively maintained, but, should work fine :)
+# [Live Demo](https://dakom.github.io/dominator-tailwind-boilerplate/)
 
 Aside for just totally barebones dominator/tailwind setup, it has a couple extra bells and whistles:
 
