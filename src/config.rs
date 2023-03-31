@@ -28,8 +28,8 @@ cfg_if::cfg_if! {
         pub const CONFIG: Lazy<Config> = Lazy::new(|| {
             let uri_root = APP_CONFIG.uri_root.clone();
             Config {
-                media_url_inner: if !CONFIG.uri_root.is_empty() {
-                    format!("/{}/media", CONFIG.uri_root)
+                media_url_inner: if !uri_root.is_empty() {
+                    format!("/{}/media", uri_root)
                 } else {
                     "/media".to_string()
                 },
