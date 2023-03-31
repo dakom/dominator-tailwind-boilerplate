@@ -1,0 +1,51 @@
+name: Test, Build, and Deploy 
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v1
+
+    - uses: actions/cache@v2
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-lint-${{ hashFiles('Cargo.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-lint-
+
+    - name: add root workspace to path
+      run: echo "${{github.workspace}}" >> $GITHUB_PATH
+
+    - name: install node
+      uses: actions/setup-node@v3
+      with: 
+        node-version: latest
+
+    - name: install yarn deps
+      run: yarn install
+
+    - name: add rust target
+      run: rustup target add wasm32-unknown-unknown
+
+    - name: install trunk
+      run: wget -qO- https://github.com/thedodd/trunk/releases/download/v0.16.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
+
+    - name: build for release 
+      run: yarn trunk:build 
+
+    - name: patch the index files 
+      run: yarn github:deploy:patch
+
+    - name: copy required media files
+      run: cp -R ./media ./dist/
+
+    - name: deploy to gh_pages
+      uses: maxheld83/ghpages@master
+      env:
+        BUILD_DIR: "demo/dist/"
+        GH_PAT: ${{ secrets.GH_PAT }}

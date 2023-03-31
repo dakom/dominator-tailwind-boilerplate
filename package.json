@@ -1,0 +1,28 @@
+{
+    "name": "gui",
+    "version": "0.1.0",
+    "license": "(MIT OR Apache-2.0)",
+    "scripts": {
+        "start": "npm-run-all --parallel localmedia:serve trunk:serve:dev",
+        "serve:dev-release": "npm-run-all --parallel localmedia:serve trunk:serve:dev-release",
+        "localmedia:serve": "cd media && http-server -g -b --cors -p 9000",
+        "trunk:serve:dev": "cross-env RUSTFLAGS=--cfg=web_sys_unstable_apis trunk serve --features dev --watch .",
+        "trunk:serve:dev-release": "cross-env RUSTFLAGS=--cfg=web_sys_unstable_apis trunk serve --release --features dev --watch .",
+        "trunk:serve:release": "cross-env RUSTFLAGS=--cfg=web_sys_unstable_apis trunk serve --release --watch .",
+        "trunk:build": "cross-env RUSTFLAGS=--cfg=web_sys_unstable_apis trunk build --release",
+        "github:deploy:patch": "node ./github-deploy-patch.js"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.14",
+        "cross-env": "^7.0.3",
+        "cssnano": "^6.0.0",
+        "http-server": "^14.1.1",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.21",
+        "postcss-cli": "^10.1.0",
+        "postcss-import": "^15.1.0",
+        "postcss-reporter": "^7.0.5",
+        "postcss-url": "^10.1.3",
+        "tailwindcss": "^3.3.1"
+    }
+}
