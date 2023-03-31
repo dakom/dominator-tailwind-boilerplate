@@ -42,7 +42,7 @@ impl ProfilePage {
             .children([
                 html!("div", {
                     .class("mt-6")
-                    .child(render_submit_button("Go visit"))
+                    .child(render_submit_button("Go (via permalink url)"))
                 }),
             ])
         })
