@@ -6,11 +6,12 @@ const fs = require("fs");
 const path = require("path");
 
 (async () => {
-    const appConfig = await readAsync("./app.config.json");
-    const pkgConfig = await readAsync("./package.json");
+    const appConfig = JSON.parse(await readAsync("./app.config.json"));
+    const pkgConfig = JSON.parse(await readAsync("./package.json"));
     const ROOTS = ["css", "media", pkgConfig.name];
 
-    const {uri_root} = JSON.parse(appConfig);
+    const {uri_root} = appConfig;
+
     if(!uri_root) {
         throw new Error("`uri_root` not found in app.config.json");
     }
@@ -23,7 +24,7 @@ const path = require("path");
         }
     }
 
-    await writeAsync("./dist/index.html", data);
+    //await writeAsync("./dist/index.html", data);
     await writeAsync("./dist/404.html", data);
 })();
 
