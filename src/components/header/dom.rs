@@ -15,6 +15,15 @@ impl Header {
     pub fn render_left(self: Rc<Self>) -> Dom {
         log::info!("{}", Route::Home.href());
         html!("div", {
+            .class(["flex", "items-center", "gap-4"])
+            .child(html!("a", {
+                .attr("href", "https://github.com/dakom/dominator-tailwind-boilerplate")
+                .child(html!("img", {
+                    .attr("src", &CONFIG.media_url("github-mark.svg"))
+                    .attr("width", "32")
+                    .attr("height", "32")
+                }))
+            }))
             .child(html!("a", {
                 .class(["text-xl", "font-bold"])
                 .text("Welcome")
@@ -49,19 +58,5 @@ impl Header {
             )
         })
     }
-
-    // pub fn render_right_auth(&self) -> Dom {
-    //     html!("div", {
-    //         .class(["flex", "items-center", "gap-4"])
-    //         .children([
-    //             html!("a", {
-    //                 .child(Button::new(ButtonColor::Yellow).render_mixin(|dom| apply_methods!(dom, {
-    //                     .text("Echo")
-    //                 })))
-    //                 .attr("href", &Route::Echo.href())
-    //             }),
-    //         ])
-    //     })
-    // }
 
 }
