@@ -24,7 +24,7 @@ const path = require("path");
         }
     }
 
-    //await writeAsync("./dist/index.html", data);
+    await writeAsync("./dist/index.html", data);
     await writeAsync("./dist/404.html", data);
 })();
 
