@@ -1,3 +1,4 @@
+use crate::page::button::ButtonPage;
 use crate::page::echo::EchoPage;
 use crate::page::image::ImagePage;
 use crate::page::profile::ProfilePage;
@@ -13,6 +14,7 @@ pub enum Route {
     Image,
     Echo,
     Profile(Option<String>),
+    Button,
     NotFound,
 }
 
@@ -32,6 +34,7 @@ impl Route {
                     Route::Image => ImagePage::new().render(),
                     Route::Echo => EchoPage::new().render(),
                     Route::Profile(value) => ProfilePage::new(value).render(),
+                    Route::Button => ButtonPage::new().render(),
                     Route::NotFound => NotFoundPage::new().render(),
                 })
             }))
@@ -84,6 +87,7 @@ impl Route {
             ["echo"] => Self::Echo,
             ["profile"] => Self::Profile(None),
             ["profile", value] => Self::Profile(Some(value.to_string())),
+            ["button"] => Self::Button,
             _ => Self::NotFound,
         }
     }
@@ -111,6 +115,7 @@ impl From<&Route> for String {
                 None => "/profile".to_string(),
                 Some(value) => format!("/profile/{}", value)
             },
+            Route::Button => "/button".to_string(),
             Route::NotFound => "404".to_string(),
         }
     }

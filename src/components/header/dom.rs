@@ -38,6 +38,7 @@ impl Header {
                     ("Image", Route::Image),
                     ("Echo", Route::Echo),
                     ("Profile", Route::Profile(None)),
+                    ("Button", Route::Button),
                 ]
                 .into_iter()
                 .map(|(text, route)| {

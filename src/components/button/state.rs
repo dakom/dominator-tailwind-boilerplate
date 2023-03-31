@@ -9,7 +9,7 @@ pub enum ButtonColor {
     Yellow,
     Rose,
     Green,
-    Red,
+    Blue,
 }
 
 impl Button {

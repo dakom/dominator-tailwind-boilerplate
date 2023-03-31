@@ -50,8 +50,8 @@ impl ButtonColor {
     pub fn mixin_color_class(&self, dom: DomBuilder<HtmlElement>) -> DomBuilder<HtmlElement> {
         match self {
             Self::Yellow => dom.class([
-                "bg-custom-yellow-200",
-                "hover:bg-custom-yellow-100",
+                "bg-yellow-200",
+                "hover:bg-yellow-100",
                 "text-rose-600",
             ]),
             Self::Rose => dom.class([
@@ -64,9 +64,9 @@ impl ButtonColor {
                 "hover:bg-emerald-600",
                 "text-white",
             ]),
-            Self::Red => dom.class([
-                "bg-red-500", 
-                "hover:bg-red-600", 
+            Self::Blue => dom.class([
+                "bg-blue-500", 
+                "hover:bg-blue-600", 
                 "text-white",
             ]),
         }
@@ -80,8 +80,6 @@ impl ButtonColor {
             "border",
             "border-transparent",
             "shadow-sm",
-            "text-sm",
-            "font-medium",
             "rounded-md",
         ])
     }
