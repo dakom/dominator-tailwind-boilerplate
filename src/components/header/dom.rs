@@ -39,6 +39,7 @@ impl Header {
                     ("Echo", Route::Echo),
                     ("Profile", Route::Profile(None)),
                     ("Button", Route::Button),
+                    ("List", Route::List),
                 ]
                 .into_iter()
                 .map(|(text, route)| {
@@ -47,7 +48,7 @@ impl Header {
                         .class_signal("underline", Route::current_signal().map(
                             clone!(route => move |current_route| {
                                 match route {
-                                    Route::Profile(_) => std::mem::discriminant(&current_route) == std::mem::discriminant(&Route::Profile(None)),
+                                    Route::Profile(_) => std::mem::discriminant(&current_route) == std::mem::discriminant(&route),
                                     _ => route == current_route
                                 }
                             }) 

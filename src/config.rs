@@ -7,6 +7,8 @@ pub struct Config {
     pub uri_root: String,
     // the media url
     media_url_inner: String,
+
+    pub number_of_list_lines: usize
 }
 
 impl Config {
@@ -22,6 +24,7 @@ cfg_if::cfg_if! {
                 // in dev mode it's always served from top-level
                 uri_root: "".to_string(),
                 media_url_inner: "http://127.0.0.1:9000".to_string(),
+                number_of_list_lines: 5,
             }
         });
     } else {
@@ -33,7 +36,8 @@ cfg_if::cfg_if! {
                 } else {
                     "/media".to_string()
                 },
-                uri_root
+                uri_root,
+                number_of_list_lines: 5,
             }
         });
     }
