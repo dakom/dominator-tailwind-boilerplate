@@ -6,7 +6,7 @@ use crate::{prelude::*, components::header::Header, primitives::form::{render_te
 pub(super) const FIELD_ID: &str = "profile-id";
 
 impl ProfilePage {
-    pub fn render(self: Rc<Self>) -> Dom {
+    pub fn render(&self) -> Dom {
         let state = self;
 
         html!("div", {
@@ -23,7 +23,7 @@ impl ProfilePage {
             }))
         })
     }
-    pub fn render_form(self: Rc<Self>) -> Dom {
+    pub fn render_form(&self) -> Dom {
         let state = self;
         html!("form" => web_sys::HtmlFormElement, {
             .attr("method", "POST")

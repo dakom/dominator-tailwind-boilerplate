@@ -2,9 +2,7 @@ use super::state::*;
 use crate::{prelude::*, components::header::Header};
 
 impl NotFoundPage {
-    pub fn render(self: Rc<Self>) -> Dom {
-        let state = self;
-
+    pub fn render(&self) -> Dom {
         html!("div", {
             .child(Header::new().render())
             .child(html!("div", {

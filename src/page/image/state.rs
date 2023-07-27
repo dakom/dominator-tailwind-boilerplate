@@ -5,12 +5,13 @@ use std::{
     collections::HashSet,
 };
 
+#[derive(Clone)]
 pub struct ImagePage {
 }
 
 impl ImagePage {
-    pub fn new() -> Rc<Self> {
-        Rc::new(Self {
-        })
+    pub fn new() -> Self {
+        Self {
+        }
     }
 }

@@ -4,7 +4,7 @@ use super::state::*;
 use crate::{prelude::*, components::{header::Header, button::{Button, ButtonColor}}};
 
 impl ListPage {
-    pub fn render(self: Rc<Self>) -> Dom {
+    pub fn render(self: Arc<Self>) -> Dom {
         let state = self;
 
         html!("div", {
@@ -35,7 +35,7 @@ impl ListPage {
     }
 
 
-    fn render_number_input(self: Rc<Self>) -> Dom {
+    fn render_number_input(self: Arc<Self>) -> Dom {
         let state = self;
         html!("div", {
             .class(["flex", "gap-5"])
@@ -57,7 +57,7 @@ impl ListPage {
 }
 
 impl Line {
-    pub fn render(self: Rc<Self>, parent: Rc<ListPage>) -> Dom {
+    pub fn render(&self, parent: Arc<ListPage>) -> Dom {
         let state = self;
         html!("div", {
             .class(["rounded-t-lg","border","border-neutral-200","bg-white"])
@@ -114,7 +114,7 @@ impl Line {
         })
     }
 
-    fn render_trash(self: Rc<Self>, parent: Rc<ListPage>) -> Dom {
+    fn render_trash(&self, parent: Arc<ListPage>) -> Dom {
         let state = self;
         let original_index = state.index;
 

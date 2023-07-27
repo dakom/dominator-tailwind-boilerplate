@@ -5,14 +5,15 @@ use std::{
     collections::HashSet,
 };
 
+#[derive(Clone)]
 pub struct EchoPage {
     pub value: Mutable<Option<String>>
 }
 
 impl EchoPage {
-    pub fn new() -> Rc<Self> {
-        Rc::new(Self {
+    pub fn new() -> Self {
+        Self {
             value: Mutable::new(None)
-        })
+        }
     }
 }

@@ -4,15 +4,15 @@ use super::state::*;
 use crate::{prelude::*, components::button::*, route::Route};
 
 impl Header {
-    pub fn render(self: Rc<Self>) -> Dom {
+    pub fn render(&self) -> Dom {
         html!("div", {
             .class(["flex", "justify-between", "items-center", "p-4", "bg-custom-green", "border-b", "border-custom-green-dark", "text-white"])
-            .child(self.clone().render_left())
-            .child(self.clone().render_right())
+            .child(self.render_left())
+            .child(self.render_right())
         })
     }
 
-    pub fn render_left(self: Rc<Self>) -> Dom {
+    pub fn render_left(&self) -> Dom {
         log::info!("{}", Route::Home.href());
         html!("div", {
             .class(["flex", "items-center", "gap-4"])
@@ -31,7 +31,7 @@ impl Header {
             }))
         })
     }
-    pub fn render_right(self: Rc<Self>) -> Dom {
+    pub fn render_right(&self) -> Dom {
         html!("div", {
             .class(["flex", "items-center", "gap-4"])
             .children(vec![

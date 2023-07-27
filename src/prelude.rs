@@ -7,12 +7,9 @@ pub use futures_signals::{
     signal_vec::{MutableVec, SignalVec, SignalVecExt},
 };
 pub use serde::{Deserialize, Serialize};
-pub use std::cell::RefCell;
-pub use std::rc::Rc;
+pub use std::sync::Arc;
 pub use wasm_bindgen::prelude::*;
 
 pub type MixinStub<T> = fn(DomBuilder<T>) -> DomBuilder<T>;
 
-pub use crate::{
-    config::*,
-};
+pub use crate::config::*;

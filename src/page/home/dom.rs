@@ -2,7 +2,7 @@ use super::state::*;
 use crate::{prelude::*, components::header::Header, route::Route};
 
 impl HomePage {
-    pub fn render(self: Rc<Self>) -> Dom {
+    pub fn render(&self) -> Dom {
         let state = self;
 
         html!("div", {

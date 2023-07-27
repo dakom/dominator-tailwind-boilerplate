@@ -4,10 +4,11 @@ use std::{
     collections::HashSet,
 };
 
+#[derive(Clone)]
 pub struct NotFoundPage {}
 
 impl NotFoundPage {
-    pub fn new() -> Rc<Self> {
-        Rc::new(Self {})
+    pub fn new() -> Self {
+        Self {}
     }
 }

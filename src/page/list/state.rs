@@ -8,12 +8,12 @@ use std::{
 pub struct ListPage {
     number_of_lines: AtomicUsize,
     last_index: AtomicUsize,
-    pub lines: MutableVec<Rc<Line>>,
+    pub lines: MutableVec<Line>,
 }
 
 impl ListPage {
-    pub fn new() -> Rc<Self> {
-        Rc::new(Self {
+    pub fn new() -> Arc<Self> {
+        Arc::new(Self {
             number_of_lines: AtomicUsize::new(CONFIG.number_of_list_lines),
             last_index: AtomicUsize::new(0),
             lines: MutableVec::new(),
@@ -44,11 +44,11 @@ pub struct Line {
 }
 
 impl Line {
-    pub fn new(index: usize) -> Rc<Self> {
-        Rc::new(Self {
+    pub fn new(index: usize) -> Self {
+        Self {
             index,
             expanded: Mutable::new(false),
-        })
+        }
     }
 
     pub fn text(&self) -> String {

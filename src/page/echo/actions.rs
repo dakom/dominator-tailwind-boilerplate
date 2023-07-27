@@ -3,7 +3,7 @@ use crate::{prelude::*, route::Route};
 use web_sys::{HtmlFormElement, HtmlInputElement};
 
 impl EchoPage {
-    pub fn handle_form(self: Rc<Self>, elem: &HtmlFormElement) {
+    pub fn handle_form(&self, elem: &HtmlFormElement) {
         let state = self;
         let get_string = |name: &str| -> Option<String> {
             let value: String = elem

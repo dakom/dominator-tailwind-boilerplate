@@ -13,9 +13,9 @@ pub enum ButtonColor {
 }
 
 impl Button {
-    pub fn new(color: ButtonColor) -> Rc<Self> {
-        Rc::new(Self {
+    pub fn new(color: ButtonColor) -> Self {
+        Self {
             color 
-        })
+        }
     }
 }

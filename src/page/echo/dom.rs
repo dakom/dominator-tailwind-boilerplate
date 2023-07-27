@@ -6,14 +6,14 @@ use crate::{prelude::*, components::header::Header, primitives::form::{render_te
 pub(super) const FIELD_CONTENT: &str = "content";
 
 impl EchoPage {
-    pub fn render(self: Rc<Self>) -> Dom {
+    pub fn render(&self) -> Dom {
         let state = self;
 
         html!("div", {
             .child(Header::new().render())
             .child(html!("div", {
                 .class(["flex", "flex-col", "items-center","justify-center", "w-full", "mt-10"])
-                .child(state.clone().render_form())
+                .child(state.render_form())
                 .child_signal(state.value.signal_ref(|value| {
                     value.as_ref().map(|value| {
                         html!("div", {
@@ -25,7 +25,7 @@ impl EchoPage {
             }))
         })
     }
-    pub fn render_form(self: Rc<Self>) -> Dom {
+    pub fn render_form(&self) -> Dom {
         let state = self;
         html!("form" => web_sys::HtmlFormElement, {
             .attr("method", "POST")

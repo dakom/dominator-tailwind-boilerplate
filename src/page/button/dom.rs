@@ -4,7 +4,7 @@ use super::state::*;
 use crate::{prelude::*, components::{header::Header, button::{Button, ButtonColor}}};
 
 impl ButtonPage {
-    pub fn render(self: Rc<Self>) -> Dom {
+    pub fn render(&self) -> Dom {
         let state = self;
 
         html!("div", {
