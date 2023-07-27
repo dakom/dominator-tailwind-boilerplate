@@ -40,6 +40,7 @@ impl Header {
                     ("Profile", Route::Profile(None)),
                     ("Button", Route::Button),
                     ("List", Route::List),
+                    ("Cipher", Route::Cipher),
                 ]
                 .into_iter()
                 .map(|(text, route)| {

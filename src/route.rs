@@ -3,6 +3,7 @@ use crate::page::echo::EchoPage;
 use crate::page::image::ImagePage;
 use crate::page::list::ListPage;
 use crate::page::profile::ProfilePage;
+use crate::page::cipher::CipherPage;
 use crate::page::{home::HomePage, not_found::NotFoundPage};
 use crate::prelude::*;
 use futures_signals::signal::Signal;
@@ -18,6 +19,7 @@ pub enum Route {
     Button,
     NotFound,
     List,
+    Cipher,
 }
 
 impl Display for Route {
@@ -38,6 +40,7 @@ impl Route {
                     Route::Profile(value) => ProfilePage::new(value).render(),
                     Route::Button => ButtonPage::new().render(),
                     Route::List => ListPage::new().render(),
+                    Route::Cipher => CipherPage::new().render(),
                     Route::NotFound => NotFoundPage::new().render(),
                 })
             }))
@@ -92,6 +95,7 @@ impl Route {
             ["profile", value] => Self::Profile(Some(value.to_string())),
             ["list"] => Self::List,
             ["button"] => Self::Button,
+            ["cipher"] => Self::Cipher,
             _ => Self::NotFound,
         }
     }
@@ -120,6 +124,7 @@ impl From<&Route> for String {
                 None => "/profile".to_string(),
                 Some(value) => format!("/profile/{}", value)
             },
+            Route::Cipher => "/cipher".to_string(),
             Route::Button => "/button".to_string(),
             Route::NotFound => "404".to_string(),
         }

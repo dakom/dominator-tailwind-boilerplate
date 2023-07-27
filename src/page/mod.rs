@@ -5,3 +5,4 @@ pub mod profile;
 pub mod image;
 pub mod button;
 pub mod list;
+pub mod cipher;
