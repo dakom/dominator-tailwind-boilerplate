@@ -20,7 +20,8 @@ impl HomePage {
                     ("Echo", Route::Echo, "Simple example of using a Mutable"),
                     ("Profile", Route::Profile(None), "Push state / permalink urls"),
                     ("Button", Route::Button, "Abstract common styles into a component"),
-                    ("List", Route::List, "More advanced usage of Mutable/MutableVec")
+                    ("List", Route::List, "More advanced usage of Mutable/MutableVec"),
+                    ("Cipher", Route::Cipher, "Using pure rust to generate ed25519 signatures"),
                     ].iter().map(|(name, route, description)| {
                         html!("div", {
                             .class(["pt-10", "hover:text-indigo-800"])
